@@ -1,0 +1,23 @@
+version: 2.1
+defaults: &defaults
+  working_directory: ~/project
+  docker:
+    - image: circleci/buildpack-deps:jessie
+
+jobs:
+  build_kernel:
+    <<: *defaults
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: sudo apt install gawk bc cpio texinfo chrpath diffstat lzop ccache
+      - run:
+          name: Build
+          command: /bin/bash ./jenkins_build.sh
+
+workflows:
+  version: 2
+  workflows:
+    jobs:
+      - build_kernel
