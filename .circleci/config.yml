@@ -15,7 +15,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            sudo apt install gawk bc
+            sudo apt install gawk bc cpio texinfo chrpath diffstat
       - run:
           name: Build
           command: |
