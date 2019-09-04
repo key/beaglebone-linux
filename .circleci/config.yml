@@ -13,8 +13,13 @@ jobs:
           name: Clone setup scripts
           command: git clone https://github.com/Angstrom-distribution/setup-scripts
       - run:
+          name: Install dependencies
+          command: |
+            sudo apt install gawk
+      - run:
           name: Build
           command: |
+            cd setup-scripts
             MACHINE=beaglebone ./oebb.sh config beaglebone
             MACHINE=beaglebone ./oebb.sh update 
             MACHINE=beaglebone ./oebb.sh bitbake virtual/kernel
