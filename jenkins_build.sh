@@ -29,7 +29,8 @@ binary="bin/${target}-"
 if [ ! -d ${directory}/ ] ; then
 	rm -rf ./gcc-* || true
 	#wget -c ${site}/${version}/${filename}
-	wget -c http://gfnd.rcn-ee.org/farm/jenkins-dl/${filename}
+	#wget -c http://gfnd.rcn-ee.org/farm/jenkins-dl/${filename}
+	wget -c http://releases.linaro.org/components/toolchain/binaries/6.5-2018.12/arm-linux-gnueabihf/${filename}
 	tar xf ${filename}
 fi
 
