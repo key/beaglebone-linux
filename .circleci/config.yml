@@ -1,0 +1,25 @@
+version: 2.1
+defaults: &defaults
+  working_directory: ~/project
+  docker:
+    - image: circleci/buildpack-deps:jessie
+
+jobs:
+  build_kernel:
+    <<: *defaults
+    steps:
+      - run:
+        name: Clone setup scripts
+        command: git clone https://github.com/Angstrom-distribution/setup-scripts
+      - run:
+        name: Build
+        command: |
+          MACHINE=beaglebone ./oebb.sh config beaglebone
+          MACHINE=beaglebone ./oebb.sh update 
+          MACHINE=beaglebone ./oebb.sh bitbake virtual/kernel
+
+workflows:
+  version: 2
+  workflows:
+    jobs:
+      - build_kernel
