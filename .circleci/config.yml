@@ -10,14 +10,14 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Clone setup scripts
-        command: git clone https://github.com/Angstrom-distribution/setup-scripts
+          name: Clone setup scripts
+          command: git clone https://github.com/Angstrom-distribution/setup-scripts
       - run:
-        name: Build
-        command: |
-          MACHINE=beaglebone ./oebb.sh config beaglebone
-          MACHINE=beaglebone ./oebb.sh update 
-          MACHINE=beaglebone ./oebb.sh bitbake virtual/kernel
+          name: Build
+          command: |
+            MACHINE=beaglebone ./oebb.sh config beaglebone
+            MACHINE=beaglebone ./oebb.sh update 
+            MACHINE=beaglebone ./oebb.sh bitbake virtual/kernel
 
 workflows:
   version: 2
